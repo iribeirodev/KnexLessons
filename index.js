@@ -1,12 +1,16 @@
 const database = require("./database");
 
-// JOIN com Where
-database.table("games")
-    .select(["games.*", "estudios.nome as estudio_nome"])
-    .innerJoin("estudios","estudios.game_id","games.id")
-    .where("games.id", 5)
-    .then(data => {
-        console.log(data)
-    }).catch(err => {
-        console.log(err)
-    })
+// async function testeTransacao(){
+//     try {
+//         await database.transaction(async t => {
+//             await database.insert({nome: "Qualquer nome"}).table("estudios");
+//             await database.insert({nome: "Company 2"}).table("estudios");
+//             await database.insert({nome: "Company 3"}).table("estudios");
+//             await database.insert({nome: "Company 4"}).table("estudios");
+//         })
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+
+// testeTransacao();
