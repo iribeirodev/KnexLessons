@@ -1,10 +1,14 @@
 const database = require("./database");
 
-// JOIN com Where
+// INNER JOIN
 database.table("games")
+    //.select()
+    // .select(["games.id", 
+    //         "estudios.id as estudio_id", 
+    //         "games.nome as game_nome",
+    //         "estudios.nome as estudio_nome"])
     .select(["games.*", "estudios.nome as estudio_nome"])
     .innerJoin("estudios","estudios.game_id","games.id")
-    .where("games.id", 5)
     .then(data => {
         console.log(data)
     }).catch(err => {
